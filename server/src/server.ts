@@ -17,12 +17,10 @@ app.use(routes); // API routes should ideally be defined before the static/catch
 // Serve static files from the React app in production
 if (process.env.NODE_ENV === "production") {
   // Correct path from server/dist/server.js to client/dist
-  app.use(express.static(path.join(__dirname, "../../../client/dist")));
+  app.use(express.static(path.join(__dirname, "../../client/dist"))); // Corrected path
 
-  // The "catchall" handler: for any request that doesn't match one above,
-  // send back React's index.html file.
   app.get("*", (_req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../../../client/dist/index.html"));
+    res.sendFile(path.join(__dirname, "../../client/dist/index.html")); // Corrected path
   });
 }
 
