@@ -65,15 +65,15 @@ const CreateTicket = () => {
         {handleSubmit}>
           <h1>Create Ticket</h1>
           <label htmlFor='tName'>Ticket Name</label>
-          <textarea 
+          <textarea
             id='tName'
             name='name'
             value={newTicket?.name || ''}
             onChange={handleTextAreaChange}
             />
           <label htmlFor='tStatus'>Ticket Status</label>
-          <select 
-            name='status' 
+          <select
+            name='status'
             id='tStatus'
             value={newTicket?.status || ''}
             onChange={handleTextChange}
@@ -83,14 +83,16 @@ const CreateTicket = () => {
             <option value='Done'>Done</option>
           </select>
           <label htmlFor='tDescription'>Ticket Description</label>
-          <textarea 
+          <textarea
             id='tDescription'
             name='description'
             value={newTicket?.description || ''}
             onChange={handleTextAreaChange}
           />
           <label htmlFor='tUserId'>User's ID</label>
+          <label htmlFor='tUserId'>Assign User</label>
           <select
+            id='tUserId'
             name='assignedUserId'
             value={newTicket?.assignedUserId || ''}
             onChange={handleUserChange}
@@ -102,7 +104,7 @@ const CreateTicket = () => {
                 </option>
               )
             }) : (
-            <textarea 
+            <textarea
               id='tUserId'
               name='assignedUserId'
               value={newTicket?.assignedUserId || 0}

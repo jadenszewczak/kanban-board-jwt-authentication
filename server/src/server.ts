@@ -5,22 +5,25 @@ dotenv.config();
 
 import express, { Request, Response } from "express";
 import path from "path"; // Import the 'path' module
+
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import routes from "./routes/index.js";
 import { sequelize } from "./models/index.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 app.use(express.json());
-app.use(routes); // API routes should ideally be defined before the static/catch-all
+app.use(routes);
 
-// Serve static files from the React app in production
 if (process.env.NODE_ENV === "production") {
-  // Correct path from server/dist/server.js to client/dist
-  app.use(express.static(path.join(__dirname, "../../client/dist"))); // Corrected path
-
+  app.use(express.static(path.join(__dirname, "../../client/dist")));
   app.get("*", (_req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../../client/dist/index.html")); // Corrected path
+    res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
   });
 }
 

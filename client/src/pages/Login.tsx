@@ -32,23 +32,26 @@ const Login = () => {
       <form className='form' onSubmit={handleSubmit}>
         <h1>Login</h1>
         <label >Username</label>
-        <input 
+        <input
           type='text'
           name='username'
           value={loginData.username || ''}
           onChange={handleChange}
+          placeholder='Enter your username'
         />
       <label>Password</label>
-        <input 
+        <input
           type='password'
           name='password'
           value={loginData.password || ''}
           onChange={handleChange}
+          title='Password'
+          placeholder='Enter your password'
         />
         <button type='submit'>Submit Form</button>
       </form>
     </div>
-    
+
   )
 };
 
