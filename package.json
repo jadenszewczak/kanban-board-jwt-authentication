@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run client:build && npm run server",
+    "start": "cd server && node dist/server.js",
     "start:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3001 && npm run client:dev\"",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
@@ -14,7 +14,7 @@
     "client:dev": "cd client && npm run dev",
     "build": "cd client && npm run build",
     "seed": "cd server && npm run seed",
-    "render-build": "cd server && npm ci && cd ../client && npm ci && cd .. && npm run build"
+    "render-build": "./build.sh"
   },
   "keywords": [],
   "author": "",
